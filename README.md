@@ -1,16 +1,13 @@
-# delicious_meals
+# Delicious Meals
 
-A new Flutter project.
+A flutter project where you can see different meal items, save your favourites, choose from different flters and also get their recipes. It uses different screens and can be a great project for beginners to have a look and learn about flutter.
 
-## Getting Started
+If you have VS Code or any editor installer and also fllutter and Android studio properly configured. You can open any AVD from Android Studio or connect a real device and use
 
-This project is a starting point for a Flutter application.
+```
+flutter run
+```
+or just use run without debugging or with debugging to get this app on your emulator or your real device.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Good luck devs
+Kushal A.
