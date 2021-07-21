@@ -9,5 +9,5 @@ flutter run
 ```
 or just use run without debugging or with debugging to get this app on your emulator or your real device.
 
-Good luck devs
+Good luck devs \n
 Kushal A.
