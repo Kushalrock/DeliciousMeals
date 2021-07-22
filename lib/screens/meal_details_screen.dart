@@ -4,6 +4,31 @@ import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
+
+  Widget buildSectionTitle(String text, BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.title,
+      ),
+    );
+  }
+
+  Widget buildContainer(Widget child) {
+    return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
+        height: 200,
+        width: 300,
+        child: child);
+  }
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
@@ -13,7 +38,7 @@ class MealDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('${selectedMeal.title}'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -26,24 +51,9 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
-                'Ingredients',
-                style: Theme.of(context).textTheme.title,
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              height: 200,
-              width: 300,
-              child: ListView.builder(
+            buildSectionTitle('Ingredients', context),
+            buildContainer(
+              ListView.builder(
                 itemBuilder: (ctx, index) => Card(
                   color: Theme.of(context).accentColor,
                   child: Container(
@@ -56,7 +66,26 @@ class MealDetailScreen extends StatelessWidget {
                 ),
                 itemCount: selectedMeal.ingredients.length,
               ),
-            )
+            ),
+            buildSectionTitle('Steps', context),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text('# ${(index + 1)}'),
+                      ),
+                      title: Text(
+                        selectedMeal.steps[index],
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                ),
+                itemCount: selectedMeal.steps.length,
+              ),
+            ),
           ],
         ),
       ),
